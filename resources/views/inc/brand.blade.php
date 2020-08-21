@@ -4,35 +4,12 @@
 	</header><!-- sect-heading -->
 
 	<div class="row">
+		@foreach($brands as $brand)
 		<div class="col-md-2 col-6">
 			<figure class="box item-logo">
-				<a href="#"><img src="images/logos/logo1.png"></a>
+				<a href="#"><img src="{{$brand->image}}"></a>
 			</figure> <!-- item-logo.// -->
 		</div> <!-- col.// -->
-		<div class="col-md-2  col-6">
-			<figure class="box item-logo">
-				<a href="#"><img src="images/logos/logo2.png"></a>
-			</figure> <!-- item-logo.// -->
-		</div> <!-- col.// -->
-		<div class="col-md-2  col-6">
-			<figure class="box item-logo">
-				<a href="#"><img src="images/logos/logo3.png"></a>
-			</figure> <!-- item-logo.// -->
-		</div> <!-- col.// -->
-		<div class="col-md-2  col-6">
-			<figure class="box item-logo">
-				<a href="#"><img src="images/logos/logo4.png"></a>
-			</figure> <!-- item-logo.// -->
-		</div> <!-- col.// -->
-		<div class="col-md-2  col-6">
-			<figure class="box item-logo">
-				<a href="#"><img src="images/logos/logo5.png"></a>
-			</figure> <!-- item-logo.// -->
-		</div> <!-- col.// -->
-		<div class="col-md-2  col-6">
-			<figure class="box item-logo">
-				<a href="#"><img src="images/logos/logo2.png"></a>
-			</figure> <!-- item-logo.// -->
-		</div> <!-- col.// -->
+		@endforeach
 	</div> <!-- row.// -->
 </div><!-- container // -->

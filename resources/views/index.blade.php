@@ -5,7 +5,7 @@
     <div class="container">
 
         <div class="intro-banner-wrap">
-            <img src="images/banners/1.jpg" class="img-fluid rounded">
+            <img src="img/blog_single_background.jpg" class="img-fluid rounded">
         </div>
 
     </div> <!-- container //  -->

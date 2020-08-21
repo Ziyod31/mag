@@ -1,24 +1,32 @@
 
-<nav class="navbar navbar-dark navbar-expand p-0 bg-primary">
+<nav class="navbar navbar-light p-0 navbar-expand border-bottom">
 	<div class="container">
-		<ul class="navbar-nav d-none d-md-flex mr-auto">
-			<li class="nav-item"><a class="nav-link" href="#">Home</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Delivery</a></li>
-			<li class="nav-item"><a class="nav-link" href="#">Payment</a></li>
-		</ul>
-		<ul class="navbar-nav">
-			<li  class="nav-item"><a href="#" class="nav-link"> Call: +99812345678 </a></li>
+		<ul class="navbar-nav mr-auto">
 			<li class="nav-item dropdown">
-				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> English </a>
-				<ul class="dropdown-menu dropdown-menu-right" style="max-width: 100px;">
+				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> USD </a>
+				<ul class="dropdown-menu small">
+					<li><a class="dropdown-item" href="#">EUR</a></li>
+					<li><a class="dropdown-item" href="#">AED</a></li>
+					<li><a class="dropdown-item" href="#">RUBL </a></li>
+				</ul>
+			</li>
+			<li class="nav-item dropdown">
+				<a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"> Language </a>
+				<ul class="dropdown-menu small">
+					<li><a class="dropdown-item" href="#">English</a></li>
 					<li><a class="dropdown-item" href="#">Arabic</a></li>
 					<li><a class="dropdown-item" href="#">Russian </a></li>
 				</ul>
 			</li>
-		</ul> <!-- list-inline //  -->
-	</div> <!-- navbar-collapse .// -->
-</div> <!-- container //  -->
-</nav> <!-- header-top-light.// -->
+		</ul>
+		<ul class="navbar-nav">
+			<li><a href="#" class="nav-link px-2"> <i class="fab fa-facebook"></i> </a></li>
+			<li><a href="#" class="nav-link px-2"> <i class="fab fa-instagram"></i> </a></li>
+			<li><a href="#" class="nav-link px-2"> <i class="fab fa-twitter"></i> </a></li>
+		</ul>
+	</div> <!-- container //  -->
+</nav>
+
 
 <section class="header-main border-bottom">
 	<div class="container">
@@ -42,6 +50,10 @@
 			</div> <!-- col.// -->
 			<div class="col-lg-4 col-sm-6 col-12">
 				<div class="widgets-wrap float-md-right">
+					<div class="widget-header  mr-3">
+						<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-heart"></i></a>
+						<span class="badge badge-pill badge-danger notify">0</span>
+					</div>
 					<div class="widget-header  mr-3">
 						<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-shopping-cart"></i></a>
 						<span class="badge badge-pill badge-danger notify">0</span>

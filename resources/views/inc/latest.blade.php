@@ -2,46 +2,31 @@
 
 	<header class="section-heading">
 		<a href="/products" class="btn btn-outline-primary float-right">See all</a>
-		<h3 class="section-title">Recommended</h3>
+		<h3 class="section-title">Latest Products</h3>
 	</header><!-- sect-heading -->
 
 	<div class="row">
-		<div class="col-md-3">
-			<div href="#" class="card card-product-grid">
-				<a href="#" class="img-wrap"> <img src="images/items/1.jpg"> </a>
-				<figcaption class="info-wrap">
-					<a href="#" class="title">Just another product name</a>
-					<div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
+		@foreach($products as $product)
+		<div class="col-md-3 col-sm-6">
+			<figure class="card card-product-grid">
+				<div class="img-wrap">
+					<img src="bootstrap-ecommerce-html/images/items/5.jpg">
+					<span class="topbar">
+						<a href="#" class="float-right"><i class="fa fa-heart"></i></a>
+						<span class="badge badge-danger"> NEW </span>
+					</span>
+				</div>
+				<figcaption class="info-wrap border-top">
+					<a href="#" class="title">{{$product->name}}</a>
+					<div class="price-wrap mt-2">
+						<span class="price">$1280</span>
+						<del class="price-old">$1980</del>
+						<a href="#" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-shopping-cart"></i></a>
+					</div> <!-- action-wrap.end -->
 				</figcaption>
-			</div>
+			</figure> <!-- card // -->
 		</div> <!-- col.// -->
-		<div class="col-md-3">
-			<div href="#" class="card card-product-grid">
-				<a href="#" class="img-wrap"> <img src="images/items/2.jpg"> </a>
-				<figcaption class="info-wrap">
-					<a href="#" class="title">Some item name here</a>
-					<div class="price mt-1">$280.00</div> <!-- price-wrap.// -->
-				</figcaption>
-			</div>
-		</div> <!-- col.// -->
-		<div class="col-md-3">
-			<div href="#" class="card card-product-grid">
-				<a href="#" class="img-wrap"> <img src="images/items/3.jpg"> </a>
-				<figcaption class="info-wrap">
-					<a href="#" class="title">Great product name here</a>
-					<div class="price mt-1">$56.00</div> <!-- price-wrap.// -->
-				</figcaption>
-			</div>
-		</div> <!-- col.// -->
-		<div class="col-md-3">
-			<div href="#" class="card card-product-grid">
-				<a href="#" class="img-wrap"> <img src="images/items/4.jpg"> </a>
-				<figcaption class="info-wrap">
-					<a href="#" class="title">Just another product name</a>
-					<div class="price mt-1">$179.00</div> <!-- price-wrap.// -->
-				</figcaption>
-			</div>
-		</div> <!-- col.// -->
+		@endforeach
 	</div> <!-- row.// -->
 
 </div> <!-- container .//  -->
