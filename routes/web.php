@@ -32,3 +32,5 @@ Route::get('/cart', function() {
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/search', 'SearchController@search')->name('search');

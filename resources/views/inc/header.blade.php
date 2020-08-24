@@ -37,9 +37,9 @@
 				</a> <!-- brand-wrap.// -->
 			</div>
 			<div class="col-lg-6 col-12 col-sm-12">
-				<form action="#" class="search">
+				<form action="{{ route('search') }}" class="search" method="get">
 					<div class="input-group w-100">
-						<input type="text" class="form-control" placeholder="Search">
+						<input type="text" class="form-control" placeholder="Search" name="query">
 						<div class="input-group-append">
 							<button class="btn btn-primary" type="submit">
 								<i class="fa fa-search"></i>
