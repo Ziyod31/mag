@@ -24,7 +24,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with('brands', $brands);
 
             $categories = Category::with('children')->whereNull('parent_id')->orderBy('name', 'asc')->get();            
-            $view->with('categories', $categories);    
+            $view->with(compact('categories'));    
         }); 
     }
 
