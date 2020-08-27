@@ -32,46 +32,53 @@
 
 				<header class="border-bottom mb-4 pb-3">
 					<div class="form-inline">
-						<span class="mr-md-auto">32 Items found </span>
-						<select class="mr-2 form-control">
-							<option>Latest items</option>
-							<option>Trending</option>
-							<option>Most Popular</option>
-							<option>Cheapest</option>
+						<span class="mr-md-auto">{{$products->count()}}</span>
+						<form action="#" method="get">
+						<select class="mr-2 form-control" name="sortBy">
+							<option>Sort by Name(A-Z)</option>
+							<option>Sort by Name(Z-A)</option>
+							<option>Sort by Price(ASC)</option>
+							<option>Sort by Price(DESC)</option>
 						</select>
+						@csrf
+						</form>
 					</div>
 				</header><!-- sect-heading -->
 
 				<div class="row">
+					@foreach($products as $product)
 					<div class="col-md-4">
 						<figure class="card card-product-grid">
 							<div class="img-wrap">
-								<img src="bootstrap-ecommerce-html/images/items/5.jpg">
+								<img src="{{ $product->image}}">
 								<span class="topbar">
 									<a href="#" class="float-right"><i class="fa fa-heart"></i></a>
-									<span class="badge badge-danger"> NEW </span>
+									@if($product->discount > 0)
+									<span class="badge badge-danger">-{{$product->discount}}%</span>
+									@endif
 								</span>
 							</div>
 							<figcaption class="info-wrap border-top">
-								<a href="#" class="title">Leather Sleeve - Macbook 13’’</a>
+								<a href="#" class="title">{{$product->name}}</a>
 								<div class="price-wrap mt-2">
-									<span class="price">$1280</span>
-									<del class="price-old">$1980</del>
+									@if($product->discount > 0)
+									<span class="price">${{$product->new_price}}</span>
+									<del class="price-old">${{$product->price}}</del>
+									@else
+									<span class="price">${{$product->price}}</span>
+									@endif
 									<a href="#" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-shopping-cart"></i></a>
 								</div> <!-- action-wrap.end -->
 							</figcaption>
 						</figure> <!-- card // -->
 					</div> <!-- col.// -->
+					@endforeach
 				</div> <!-- row end.// -->
 
 
 				<nav class="mt-4" aria-label="Page navigation sample">
 					<ul class="pagination">
-						<li class="page-item disabled"><a class="page-link" href="#">Previous</a></li>
-						<li class="page-item active"><a class="page-link" href="#">1</a></li>
-						<li class="page-item"><a class="page-link" href="#">2</a></li>
-						<li class="page-item"><a class="page-link" href="#">3</a></li>
-						<li class="page-item"><a class="page-link" href="#">Next</a></li>
+						{{$products->links()}}
 					</ul>
 				</nav>
 

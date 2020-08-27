@@ -17,16 +17,26 @@ class AppServiceProvider extends ServiceProvider
     public function register()
     {
         view()->composer('index', function($view){
-            $products = Product::latest()->limit(9)->get();
+            $products = Product::latest()->limit(8)->get();
             $view->with('products', $products);
 
             $brands = Brand::all();
             $view->with('brands', $brands);
 
+        }); 
+
+        view()->composer('inc.nav', function($view){
             $categories = Category::with('children')->whereNull('parent_id')->orderBy('name', 'asc')->get();            
             $view->with(compact('categories'));    
-        }); 
-    }
+        });
+
+        view()->composer('pages.products', function($view){
+            $products = Product::latest()->paginate(12);
+            $view->with('products', $products);
+        });
+
+
+        }
 
     /**
      * Bootstrap any application services.

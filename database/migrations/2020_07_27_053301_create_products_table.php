@@ -22,7 +22,7 @@ class CreateProductsTable extends Migration
             $table->double('price');
             $table->string('quantity');
             $table->string('image');
-            $table->string('discount');
+            $table->string('discount')->nullable();
             $table->timestamps();
         });
     }

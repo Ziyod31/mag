@@ -2,15 +2,19 @@
 	<header class="card-header">
 		<a href="#" data-toggle="collapse" data-target="#collapse_1" aria-expanded="true" class="">
 			<i class="icon-control fa fa-chevron-down"></i>
-			<h6 class="title">Product type</h6>
+			<h6 class="title">Categories</h6>
 		</a>
 	</header>
-	<div class="filter-content collapse show" id="collapse_1" style="">
+	<div class="filter-content collapse show" id="collapse_2" style="">
 		<div class="card-body">
-			<ul class="list-menu">
-				<li><a href="#">People  </a></li>
-			</ul>
-
+			<label class="custom-control custom-checkbox">
+				@foreach($categories as $category)
+				<input type="checkbox" checked="" class="custom-control-input">
+				<div class="custom-control-label">{{$category->name}}  
+					<b class="badge badge-pill badge-light float-right">{{$category->product->count()}}</b>
+				</div>
+				@endforeach
+			</label>
 		</div> <!-- card-body.// -->
 	</div>
 </article> <!-- filter-group  .// -->
@@ -22,7 +26,7 @@
 			<h6 class="title">Brands </h6>
 		</a>
 	</header>
-	
+
 	<div class="filter-content collapse show" id="collapse_2" style="">
 		<div class="card-body">
 			<label class="custom-control custom-checkbox">

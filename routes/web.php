@@ -17,9 +17,7 @@ Route::get('/', function () {
     return view('index');
 });
 
-Route::get('/products', function() {
-	return view('pages.products');
-});
+Route::get('/products', 'SearchController@index')->name('products');
 
 Route::get('/product', function() {
 	return view('pages.product');

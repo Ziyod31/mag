@@ -10,17 +10,23 @@
 		<div class="col-md-3 col-sm-6">
 			<figure class="card card-product-grid">
 				<div class="img-wrap">
-					<img src="bootstrap-ecommerce-html/images/items/5.jpg">
+					<img src="{{ $product->image}}">
 					<span class="topbar">
 						<a href="#" class="float-right"><i class="fa fa-heart"></i></a>
-						<span class="badge badge-danger"> NEW </span>
+						@if($product->discount > 0)
+						<span class="badge badge-danger">-{{$product->discount}}%</span>
+						@endif
 					</span>
 				</div>
 				<figcaption class="info-wrap border-top">
 					<a href="#" class="title">{{$product->name}}</a>
 					<div class="price-wrap mt-2">
-						<span class="price">$1280</span>
-						<del class="price-old">$1980</del>
+						@if($product->discount > 0)
+						<span class="price">${{$product->new_price}}</span>
+						<del class="price-old">${{$product->price}}</del>
+						@else
+						<span class="price">${{$product->price}}</span>
+						@endif
 						<a href="#" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-shopping-cart"></i></a>
 					</div> <!-- action-wrap.end -->
 				</figcaption>

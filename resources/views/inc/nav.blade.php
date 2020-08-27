@@ -13,9 +13,7 @@
 
         <ul class="menu-category">
 
-          @foreach($categories as $category)
-          
-          
+          @foreach($categories as $category)          
           @if(count($category->children) > 0)
           <li class="has-submenu"><a href="#">{{$category->name}}</a>
             @else

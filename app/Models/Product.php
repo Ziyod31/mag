@@ -4,13 +4,16 @@ namespace App\Models;
 
 use App\Models\Brand;
 use App\Models\Category;
-use Spatie\Searchable\Searchable;
-use Spatie\Searchable\SearchResult;
+use App\Models\getNewPriceAttribute;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Searchable\SearchResult;
+use Spatie\Searchable\Searchable;
 
 class Product extends Model implements Searchable
 {
     protected $fillable = ['name', 'description'];
+
+    protected $guarded = [];
 
     public function getSearchresult(): SearchResult
     {
@@ -40,5 +43,9 @@ class Product extends Model implements Searchable
     	return $this->belongsToMany(Order::class, 'orders_products')->withTimestamps();
     }
 
+    public function getNewPriceAttribute()
+    {
+        return $this->price * (1 - ($this->discount / 100));
+    }
 
 }
