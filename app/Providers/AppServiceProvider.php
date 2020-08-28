@@ -30,13 +30,17 @@ class AppServiceProvider extends ServiceProvider
             $view->with(compact('categories'));    
         });
 
-        view()->composer('pages.products', function($view){
-            $products = Product::latest()->paginate(12);
-            $view->with('products', $products);
+        view()->composer('inc.aside', function($view){
+
+            $categories = Category::orderBy('name', 'asc')->get();          
+            $view->with('categories', $categories);    
+
+            $brands = Brand::all();
+            $view->with('brands', $brands);
+
         });
 
-
-        }
+    }
 
     /**
      * Bootstrap any application services.

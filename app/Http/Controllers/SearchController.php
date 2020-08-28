@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\ProductsRequest;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Spatie\Searchable\Search;
+use Symfony\Component\HttpFoundation\getQueryString;
 
 class SearchController extends Controller
 {
@@ -14,31 +16,32 @@ class SearchController extends Controller
 		->registerModel(Product::class, 'name', 'description')
 		->perform($request->input('query'));
 
-		return view('pages.shop', compact('searchResults'));
+		return view('pages.shop', compact('searchResults', 'request'));
 	}
 
-	public function index(Request $request, Product $product)
+	public function index(ProductsRequest $request)
 	{
 
-		$product = $product->newQuery();
-		if($request->has('category_id')){
-			$products->where('category_id', $request->input('category_id'));
+		$productsQuery = Product::with(['brand','category']);
+
+		if ($request->filled('price_from')) {
+			$productsQuery->where('price', '>=', $request->price_from);
 		}
 
-		if($request->has('brand_id')){
-			$products->where('brand_id', $request->input('brand_id'));
+		if ($request->filled('price_to')) {
+			$productsQuery->where('price', '<=', $request->price_to);
 		}
 
-		if($request->has('price_from')){
-			$products->where('price_from', $request->input('price_from'));
+		$fields = ['category_id', 'brand_id'];
+
+		foreach($fields as $field) {
+			if($request->has($field)) {
+				$productsQuery->$field();
+			}
 		}
 
-		if($request->has('price_to')){
-			$products->where('price_to', $request->input('price_to'));
-		}
+		$products = $productsQuery->paginate(12)->withPath("?".$request->getQueryString());
 
-		$products = $product->get();
-
-		return view('pages.products', compact('product'));
+		return view('pages.products', compact('products', 'request'));
 	}
 }
