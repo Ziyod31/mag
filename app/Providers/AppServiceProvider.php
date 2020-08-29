@@ -30,15 +30,7 @@ class AppServiceProvider extends ServiceProvider
             $view->with(compact('categories'));    
         });
 
-        view()->composer('inc.aside', function($view){
-
-            $categories = Category::orderBy('name', 'asc')->get();          
-            $view->with('categories', $categories);    
-
-            $brands = Brand::all();
-            $view->with('brands', $brands);
-
-        });
+      
 
     }
 

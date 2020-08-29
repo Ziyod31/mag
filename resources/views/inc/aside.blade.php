@@ -10,12 +10,14 @@
 		</header>
 		<div class="filter-content collapse show" id="collapse_1" style="">
 			<div class="card-body">
+				
 				@foreach($categories as $category)
 				<label class="custom-control custom-checkbox">
-					<input type="checkbox" name="category[]" class="custom-control-input" value="{{ $category->id }}">
+					<input type="checkbox" name="category_id[]" class="custom-control-input" value="{{ $category->id }}">
 					<div class="custom-control-label">{{$category->name}}</div>
 				</label>
 				@endforeach
+
 			</div> <!-- card-body.// -->
 		</div>
 	</article> <!-- filter-group  .// -->
@@ -30,7 +32,7 @@
 			<div class="card-body">
 				@foreach($brands as $brand)
 				<label class="custom-control custom-checkbox">	
-					<input type="checkbox" name="brand" class="custom-control-input" value="{{ $brand->id }}">
+					<input type="checkbox" name="brand_id[]" class="custom-control-input" value="{{ $brand->id }}">
 					<div class="custom-control-label">{{$brand->name}}</div>
 				</label>
 				@endforeach

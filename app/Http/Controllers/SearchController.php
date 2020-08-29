@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ProductsRequest;
+use App\Models\Brand;
+use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Spatie\Searchable\Search;
@@ -21,6 +23,9 @@ class SearchController extends Controller
 
 	public function index(ProductsRequest $request)
 	{
+		$categories = Category::with('children')->orderBy('name', 'asc')->get();
+
+		$brands = Brand::all();          
 
 		$productsQuery = Product::with(['brand','category']);
 
@@ -32,16 +37,21 @@ class SearchController extends Controller
 			$productsQuery->where('price', '<=', $request->price_to);
 		}
 
-		$fields = ['category_id', 'brand_id'];
+		if ($request['sortBy'] == 'name_asc') {
+			$products =  Product::paginate(12)->orderBy('name','ASC');
+		}
+		elseif($request['sortBy'] == 'name_desc') {
+			$products =  Product::paginate(12)->orderBy('name','DESC');
+		}
 
-		foreach($fields as $field) {
-			if($request->has($field)) {
-				$productsQuery->$field();
+		foreach(['category_id','brand_id'] as $field) {
+			if(!empty($request->$field)) {
+				$productsQuery->where($field, '=', $request->$field);
 			}
 		}
 
-		$products = $productsQuery->paginate(12)->withPath("?".$request->getQueryString());
-
-		return view('pages.products', compact('products', 'request'));
+		$products = $productsQuery->paginate(12)->withPath("?".$request);
+		
+		return view('pages.products', compact('products', 'request', 'brands', 'categories'));
 	}
-}
+}		

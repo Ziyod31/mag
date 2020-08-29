@@ -33,12 +33,13 @@
 				<header class="border-bottom mb-4 pb-3">
 					<div class="form-inline">
 						<span class="mr-md-auto">{{$products->count()}}</span>
-						<form action="#" method="get">
-						<select class="mr-2 form-control" name="sortBy">
-							<option>Sort by Name(A-Z)</option>
-							<option>Sort by Name(Z-A)</option>
-							<option>Sort by Price(ASC)</option>
-							<option>Sort by Price(DESC)</option>
+						<form method="get">
+						<select class="mr-2 form-control" name="sortBy" onchange="this.form.submit()">
+							<option value="name_asc">Sort by Name(A-Z)</option>
+							<option value="name_desc">Sort by Name(Z-A)</option>
+							<option value="price_asc">Sort by Price(ASC)</option>
+							<option value="price_desc">Sort by Price(DESC)</option>
+							<input type="hidden" name="sort_name" value="sortBy">
 						</select>
 						@csrf
 						</form>
