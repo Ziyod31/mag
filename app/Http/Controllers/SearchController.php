@@ -23,9 +23,9 @@ class SearchController extends Controller
 
 	public function index(ProductsRequest $request)
 	{
-		$categories = Category::with('children')->orderBy('name', 'asc')->get();
+		$brands = Brand::all();
 
-		$brands = Brand::all();          
+		$categories = Category::all();
 
 		$productsQuery = Product::with(['brand','category']);
 
@@ -37,21 +37,19 @@ class SearchController extends Controller
 			$productsQuery->where('price', '<=', $request->price_to);
 		}
 
-		if ($request['sortBy'] == 'name_asc') {
-			$products =  Product::paginate(12)->orderBy('name','ASC');
-		}
-		elseif($request['sortBy'] == 'name_desc') {
-			$products =  Product::paginate(12)->orderBy('name','DESC');
-		}
-
 		foreach(['category_id','brand_id'] as $field) {
 			if(!empty($request->$field)) {
 				$productsQuery->where($field, '=', $request->$field);
 			}
 		}
-
-		$products = $productsQuery->paginate(12)->withPath("?".$request);
+		
+		$products = $productsQuery->paginate(12)->withPath("?".$request->getQueryString());
 		
 		return view('pages.products', compact('products', 'request', 'brands', 'categories'));
+	}
+
+	public function brandCategory()
+	{
+		
 	}
 }		

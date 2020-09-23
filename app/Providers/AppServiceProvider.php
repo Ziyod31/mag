@@ -26,11 +26,16 @@ class AppServiceProvider extends ServiceProvider
         }); 
 
         view()->composer('inc.nav', function($view){
-            $categories = Category::with('children')->whereNull('parent_id')->orderBy('name', 'asc')->get();            
-            $view->with(compact('categories'));    
+            $categories = Category::with('children')->whereNull('parent_id')->orderBy('name', 'asc')->get();      
+
+            // $categories = Category::with('children')->orderBy('name', 'asc')->get();
+
+            $brands = Brand::all();
+
+            $view->with(compact('categories', 'brands'));    
         });
 
-      
+
 
     }
 

@@ -17,25 +17,23 @@ class Product extends Model implements Searchable
 
     public function getSearchresult(): SearchResult
     {
-        $url = route('');
 
         return new SearchResult(
             $this,
             $this->name,
-            $this->description,
-            $url
+            $this->description
         );
     }
 
 
     public function brand()
     {
-    	return $this->belongsTo(Brand::class);
+    	return $this->belongsTo(Brand::class, 'brand_id');
     }
 
     public function category()
     {
-    	return $this->belongsTo(Category::class);
+    	return $this->belongsTo(Category::class, 'category_id');
     }
 
     public function orders()
@@ -47,5 +45,4 @@ class Product extends Model implements Searchable
     {
         return $this->price * (1 - ($this->discount / 100));
     }
-
 }

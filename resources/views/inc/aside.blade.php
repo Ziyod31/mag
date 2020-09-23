@@ -13,7 +13,7 @@
 				
 				@foreach($categories as $category)
 				<label class="custom-control custom-checkbox">
-					<input type="checkbox" name="category_id[]" class="custom-control-input" value="{{ $category->id }}">
+					<input type="checkbox" name="category_id[]" class="custom-control-input" value="{{ $category->id }}" @if(request()->has(['category_id' => $category->id])) checked @endif>
 					<div class="custom-control-label">{{$category->name}}</div>
 				</label>
 				@endforeach
