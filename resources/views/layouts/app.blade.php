@@ -57,7 +57,31 @@ $(document).ready(function() {
         </div><!-- //container -->
     </footer>
     <!-- ========================= FOOTER END // ========================= -->
-
+    <script type="text/javascript">
+        $.ajaxSetup({
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+            }
+        });
+        $(document).ready(function () {
+            $('#city').on('change',function(e) {
+                var cat_id = e.target.value;
+                $.ajax({
+                    url:"{{ route('region') }}",
+                    type:"POST",
+                    data: {
+                        country_id: id
+                    },
+                    success:function (data) {
+                        $('#region').empty();
+                        $.each(data.region[0].region,function(index,region){
+                            $('#region').append('<option value="'+region.id+'">'+region.name+'</option>');
+                        })
+                    }
+                })
+            });
+        });
+    </script>
 
 </body>
 </html>

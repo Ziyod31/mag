@@ -11,7 +11,7 @@ use Spatie\Searchable\Searchable;
 
 class Product extends Model implements Searchable
 {
-    protected $fillable = ['name', 'description'];
+    protected $fillable = ['name', 'description', 'category_id', 'brand_id'];
 
     protected $guarded = [];
 
@@ -24,7 +24,6 @@ class Product extends Model implements Searchable
             $this->description
         );
     }
-
 
     public function brand()
     {

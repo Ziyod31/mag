@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('index');
-});
+})->name('index');
 
 Route::get('/products', 'SearchController@index')->name('products');
 
@@ -34,3 +34,5 @@ Route::get('/home', 'HomeController@index')->name('home');
 Route::get('/search', 'SearchController@search')->name('search');
 
 Route::get('/shop', 'SearchController@brandCategory');
+
+Route::get('/get-region', 'CityController@getRegion')->name('region');

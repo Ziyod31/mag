@@ -2,6 +2,7 @@
 
 @section('content')
 <!-- ========================= SECTION CONTENT ========================= -->
+
 <section class="section-content padding-y">
 
   <!-- ============================ COMPONENT REGISTER   ================================= -->
@@ -27,34 +28,33 @@
             <small class="form-text text-muted">Type your full phone number</small>
           </div>
         </div> <!-- form-group end.// -->
+
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>City</label>
-            <select id="inputState" class="form-control">
+
+            <select id="city" name="city" class="form-control">
               <option> Choose...</option>
-              <option>Uzbekistan</option>
-              <option>Russia</option>
-              <option selected="">United States</option>
-              <option>India</option>
-              <option>Afganistan</option>
+              @foreach($cities as $city)
+              <option value="{{ $city->id }}">{{$city->name}}</option>
+              @endforeach
             </select>
+
           </div> <!-- form-group end.// -->
+
           <div class="form-group col-md-6">
             <label>Region</label>
-            <select id="inputState" class="form-control">
-              <option> Choose...</option>
-              <option>Uzbekistan</option>
-              <option>Russia</option>
-              <option selected="">United States</option>
-              <option>India</option>
-              <option>Afganistan</option>
+            <select id="region" name="region" class="form-control">
+              <option value="0"> Choose...</option>
             </select>
           </div> <!-- form-group end.// -->
+
         </div> <!-- form-row.// -->
+
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Create password</label>
-            <input class="form-control" type="password">
+            <input class="form-control" type="password" name="password" id="password">
           </div> <!-- form-group end.// --> 
           <div class="form-group col-md-6">
             <label>Repeat password</label>

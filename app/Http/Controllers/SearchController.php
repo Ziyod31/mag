@@ -8,7 +8,6 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Spatie\Searchable\Search;
-use Symfony\Component\HttpFoundation\getQueryString;
 
 class SearchController extends Controller
 {
@@ -27,7 +26,7 @@ class SearchController extends Controller
 
 		$categories = Category::all();
 
-		$productsQuery = Product::with(['brand','category']);
+		$productsQuery = Product::with('brand','category');
 
 		if ($request->filled('price_from')) {
 			$productsQuery->where('price', '>=', $request->price_from);
@@ -36,20 +35,20 @@ class SearchController extends Controller
 		if ($request->filled('price_to')) {
 			$productsQuery->where('price', '<=', $request->price_to);
 		}
-
-		foreach(['category_id','brand_id'] as $field) {
-			if(!empty($request->$field)) {
-				$productsQuery->where($field, '=', $request->$field);
-			}
-		}
 		
+		if($request->brand_id !=NULL) {
+			$productsQuery->whereIn('brand_id', $request->brand_id);
+		}
+
+		if($request->category_id !=NULL) {
+			$productsQuery->whereIn('category_id', $request->category_id);
+		}
+
 		$products = $productsQuery->paginate(12)->withPath("?".$request->getQueryString());
 		
+		// dd($products);
+
 		return view('pages.products', compact('products', 'request', 'brands', 'categories'));
 	}
 
-	public function brandCategory()
-	{
-		
-	}
 }		

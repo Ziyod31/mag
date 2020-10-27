@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+
 <!-- ========================= SECTION PAGETOP ========================= -->
 <section class="section-pagetop bg">
 	<div class="container">
@@ -91,5 +92,5 @@
 
 			</div> <!-- container .//  -->
 		</section>
-<!-- ========================= SECTION CONTENT END// ========================= -->
-@endsection
+		<!-- ========================= SECTION CONTENT END// ========================= -->
+		@endsection

@@ -1,5 +1,4 @@
 <form method="GET">
-	@csrf
 
 	<article class="filter-group">
 		<header class="card-header">
@@ -13,7 +12,7 @@
 				
 				@foreach($categories as $category)
 				<label class="custom-control custom-checkbox">
-					<input type="checkbox" name="category_id[]" class="custom-control-input" value="{{ $category->id }}" @if(request()->has(['category_id' => $category->id])) checked @endif>
+					<input type="checkbox" class="custom-control-input" name="category_id[]" value="{{ $category->id }}">
 					<div class="custom-control-label">{{$category->name}}</div>
 				</label>
 				@endforeach
@@ -32,7 +31,7 @@
 			<div class="card-body">
 				@foreach($brands as $brand)
 				<label class="custom-control custom-checkbox">	
-					<input type="checkbox" name="brand_id[]" class="custom-control-input" value="{{ $brand->id }}">
+					<input type="checkbox" class="custom-control-input" name="brand_id[]" value="{{ $brand->id }}">
 					<div class="custom-control-label">{{$brand->name}}</div>
 				</label>
 				@endforeach
@@ -63,4 +62,5 @@
 			</div><!-- card-body.// -->
 		</div>
 	</article> <!-- filter-group .// -->
+	
 </form>

@@ -2,6 +2,9 @@
 
 namespace App;
 
+use App\Models\City;
+use App\Models\Order;
+use App\Models\Region;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
@@ -40,5 +43,16 @@ class User extends Authenticatable
     public function orders()
     {
         return $this->hasMany(Order::class);
+    }
+
+
+    public function regions()
+    {
+        return $this->hasMany(Region::class);
+    }
+
+    public function cities()
+    {
+        return $this->hasMany(City::class);
     }
 }
