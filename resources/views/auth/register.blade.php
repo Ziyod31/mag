@@ -45,7 +45,6 @@
           <div class="form-group col-md-6">
             <label>Region</label>
             <select id="region" name="region" class="form-control">
-              <option value="0"> Choose...</option>
             </select>
           </div> <!-- form-group end.// -->
 

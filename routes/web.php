@@ -35,4 +35,4 @@ Route::get('/search', 'SearchController@search')->name('search');
 
 Route::get('/shop', 'SearchController@brandCategory');
 
-Route::get('/get-region', 'CityController@getRegion')->name('region');
+Route::get('/region', 'CityController@getRegion')->name('region');

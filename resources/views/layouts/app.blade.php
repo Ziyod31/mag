@@ -58,30 +58,29 @@ $(document).ready(function() {
     </footer>
     <!-- ========================= FOOTER END // ========================= -->
     <script type="text/javascript">
-        $.ajaxSetup({
-            headers: {
-                'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-            }
-        });
-        $(document).ready(function () {
-            $('#city').on('change',function(e) {
-                var cat_id = e.target.value;
-                $.ajax({
-                    url:"{{ route('region') }}",
-                    type:"POST",
-                    data: {
-                        country_id: id
-                    },
-                    success:function (data) {
-                        $('#region').empty();
-                        $.each(data.region[0].region,function(index,region){
-                            $('#region').append('<option value="'+region.id+'">'+region.name+'</option>');
-                        })
-                    }
-                })
+     $(document).ready(function() {
+        $('#city').on('change', function() {
+            var city_id = this.value;
+            $("#state-dropdown").html('');
+            $.ajax({
+                url:"{{url('region')}}",
+                type: "GET",
+                data: {
+                    city_id: city_id,
+                    _token: '{{csrf_token()}}' 
+                },
+                dataType : 'json',
+                success: function(result){
+                    $('#region').append('<option value="">Choose ...</option>'); 
+                    $.each(result.regions,function(key,value){
+                        $("#region").append('<option value="'+value.id+'">'+value.name+'</option>');
+                    });
+                    $('#region').append('<option value="">Select City First</option>'); 
+                }
             });
-        });
-    </script>
+        });    
+    });
+</script>
 
 </body>
 </html>
