@@ -34,63 +34,60 @@
 				<header class="border-bottom mb-4 pb-3">
 					<div class="form-inline">
 						<span class="mr-md-auto">32 Items found </span>
-						<select class="mr-2 form-control">
-							<option>Latest items</option>
-							<option>Trending</option>
-							<option>Most Popular</option>
-							<option>Cheapest</option>
-						</select>
-						<div class="btn-group">
-							<a href="#" class="btn btn-outline-secondary" data-toggle="tooltip" title="List view"> 
-								<i class="fa fa-bars"></i></a>
-								<a href="#" class="btn  btn-outline-secondary active" data-toggle="tooltip" title="Grid view"> 
-									<i class="fa fa-th"></i></a>
-								</div>
+						<form action="route('index')" method="GET">
+							<select class="mr-2 form-control" name="sortby">
+								<option>Sort by</option>
+								<option value="nameASC">Name ASC</option>
+								<option value="nameDesc">Name DESC</option>
+								<option value="priceAsc">Price ASC</option>
+								<option value="priceDesc">Price DESC</option>
+							</select>
+						</form>
+					</div>
+				</header><!-- sect-heading -->
+
+				<div class="row">
+					@foreach($products as $product)
+					<div class="col-md-4">
+						<figure class="card card-product-grid">
+							<div class="img-wrap">
+								<img src="{{ $product->image}}">
+								<span class="topbar">
+									<a href="#" class="float-right"><i class="fa fa-heart"></i></a>
+									@if($product->discount > 0)
+									<span class="badge badge-danger">-{{$product->discount}}%</span>
+									@endif
+								</span>
 							</div>
-						</header><!-- sect-heading -->
-
-						<div class="row">
-							@foreach($products as $product)
-							<div class="col-md-4">
-								<figure class="card card-product-grid">
-									<div class="img-wrap">
-										<img src="{{ $product->image}}">
-										<span class="topbar">
-											<a href="#" class="float-right"><i class="fa fa-heart"></i></a>
-											@if($product->discount > 0)
-											<span class="badge badge-danger">-{{$product->discount}}%</span>
-											@endif
-										</span>
-									</div>
-									<figcaption class="info-wrap border-top">
-										<a href="#" class="title">{{$product->name}}</a>
-										<div class="price-wrap mt-2">
-											@if($product->discount > 0)
-											<span class="price">${{$product->new_price}}</span>
-											<del class="price-old">${{$product->price}}</del>
-											@else
-											<span class="price">${{$product->price}}</span>
-											@endif
-											<a href="#" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-shopping-cart"></i></a>
-										</div> <!-- action-wrap.end -->
-									</figcaption>
-								</figure> <!-- card // -->
-							</div> <!-- col.// -->
-							@endforeach
-						</div> <!-- row end.// -->
+							<figcaption class="info-wrap border-top">
+								<a href="#" class="title">{{$product->name}}</a>
+								<div class="price-wrap mt-2">
+									@if($product->discount > 0)
+									<span class="price">${{$product->new_price}}</span>
+									<del class="price-old">${{$product->price}}</del>
+									@else
+									<span class="price">${{$product->price}}</span>
+									@endif
+									<a href="#" class="btn btn-sm btn-outline-primary float-right"><i class="fa fa-shopping-cart"></i></a>
+								</div> <!-- action-wrap.end -->
+							</figcaption>
+						</figure> <!-- card // -->
+					</div> <!-- col.// -->
+					@endforeach
+				</div> <!-- row end.// -->
 
 
-						<nav class="mt-4" aria-label="Page navigation sample">
-							<ul class="pagination">
-								{{$products->links()}}
-							</ul>
-						</nav>
+				<nav class="mt-4" aria-label="Page navigation sample">
+					<ul class="pagination">
+						{{$products->links()}}
+					</ul>
+				</nav>
 
-					</main> <!-- col.// -->
+			</main> <!-- col.// -->
 
-				</div>
+		</div>
 
-			</div> <!-- container .//  -->
-		</section>
-		<!-- ========================= SECTION CONTENT END// ========================= -->
-		@endsection
+	</div> <!-- container .//  -->
+</section>
+<!-- ========================= SECTION CONTENT END// ========================= -->
+@endsection

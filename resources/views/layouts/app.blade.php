@@ -61,8 +61,11 @@ $(document).ready(function() {
      $(document).ready(function() {
         $('#city').on('change', function() {
             var city_id = this.value;
-            $("#state-dropdown").html('');
+            $("#region").html('');
             $.ajax({
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+                },
                 url:"{{url('region')}}",
                 type: "GET",
                 data: {
@@ -71,11 +74,12 @@ $(document).ready(function() {
                 },
                 dataType : 'json',
                 success: function(result){
+                    $('#region').html(' ');
                     $('#region').append('<option value="">Choose ...</option>'); 
                     $.each(result.regions,function(key,value){
                         $("#region").append('<option value="'+value.id+'">'+value.name+'</option>');
                     });
-                    $('#region').append('<option value="">Select City First</option>'); 
+                    // $('#region').html('<option value="">Select City First</option>'); 
                 }
             });
         });    

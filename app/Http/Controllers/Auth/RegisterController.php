@@ -29,7 +29,7 @@ class RegisterController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = RouteServiceProvider::HOME;
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -49,12 +49,17 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-        ]);
-    }
+
+       return Validator::make($data, [
+        'name' => ['required', 'string', 'max:255'],
+        'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+        'password' => ['required', 'string', 'min:8', 'confirmed'],
+        'city_id' => ['required', 'string'],
+        'region_id' => ['required', 'string'],
+        'address' => ['required', 'string', 'max:255'],
+        'phone' => ['required', 'numeric', 'max:9'],
+    ]);
+   }
 
     /**
      * Create a new user instance after a valid registration.
@@ -64,10 +69,17 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
+
         return User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'phone' => $data['phone'],
+            'address' => $data['address'],
+            'city_id' => $data['city'],
+            'region_id' => $data['region'],
             'password' => Hash::make($data['password']),
-        ]);
+
+
+        ]);        
     }
 }

@@ -9,11 +9,12 @@
   <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
     <article class="card-body">
       <header class="mb-4"><h4 class="card-title">Sign up</h4></header>
-      <form method="POST" action="{{ route('register') }}">
+      <form method="POST" action="/register">
+        @csrf
         <div class="form-row">
           <div class="col form-group">
             <label>Full name</label>
-            <input type="text" class="form-control" placeholder="Name, surname and family name" id="name" name="name">
+            <input type="text" class="form-control" id="name" name="name">
           </div> <!-- form-group end.// -->
         </div> <!-- form-row end.// -->
         <div class="form-row">
@@ -49,7 +50,12 @@
           </div> <!-- form-group end.// -->
 
         </div> <!-- form-row.// -->
-
+        <div class="form-row">
+          <div class="col form-group">
+            <label>Address</label>
+            <input type="text" class="form-control" id="address" name="address">
+          </div> <!-- form-group end.// -->
+        </div> <!-- form-row end.// -->
         <div class="form-row">
           <div class="form-group col-md-6">
             <label>Create password</label>
@@ -57,7 +63,7 @@
           </div> <!-- form-group end.// --> 
           <div class="form-group col-md-6">
             <label>Repeat password</label>
-            <input class="form-control" type="password">
+            <input class="form-control" type="password" id="password-confirm" name="password-confirmation">
           </div> <!-- form-group end.// -->  
         </div>
         <div class="form-group">
@@ -65,7 +71,7 @@
         </div> <!-- form-group// -->      
         <div class="form-group"> 
           <label class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" checked="">
+            <input type="checkbox" class="custom-control-input" checked="required">
             <div class="custom-control-label">I agree with<a href="#">terms and contitions</a>  </div>
           </label>
         </div> <!-- form-group end.// -->           

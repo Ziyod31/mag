@@ -12,7 +12,9 @@
 				
 				@foreach($categories as $category)
 				<label class="custom-control custom-checkbox">
-					<input type="checkbox" class="custom-control-input" name="category_id[]" value="{{ $category->id }}">
+					
+					<input type="checkbox" class="custom-control-input" name="category_id[]" value="{{ $category->id }}" @if(request()->category_id != NULL && in_array($category->id, request()->category_id))	checked @endif> 
+					
 					<div class="custom-control-label">{{$category->name}}</div>
 				</label>
 				@endforeach
@@ -31,7 +33,7 @@
 			<div class="card-body">
 				@foreach($brands as $brand)
 				<label class="custom-control custom-checkbox">	
-					<input type="checkbox" class="custom-control-input" name="brand_id[]" value="{{ $brand->id }}">
+					<input type="checkbox" class="custom-control-input" name="brand_id[]" value="{{ $brand->id }}" @if(request()->brand_id != NULL && in_array($brand->id, request()->brand_id)) checked @endif>
 					<div class="custom-control-label">{{$brand->name}}</div>
 				</label>
 				@endforeach

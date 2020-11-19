@@ -19,7 +19,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password',
+        'name', 'email', 'password', 'region_id', 'city_id', 'phone', 'address'
     ];
 
     /**
@@ -44,7 +44,6 @@ class User extends Authenticatable
     {
         return $this->hasMany(Order::class);
     }
-
 
     public function regions()
     {
