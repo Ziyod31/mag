@@ -37,7 +37,7 @@
 		</a> <!-- brand-wrap.// -->
 	</div>
 	<div class="col-lg-6 col-sm-12">
-		<form action="#" class="search">
+		<form action="{{ route('search') }}" class="search">
 			<div class="input-group w-100">
 			    <input type="text" class="form-control" placeholder="Search">
 			    <div class="input-group-append">
@@ -59,8 +59,8 @@
 				<div class="text">
 					<span class="text-muted">Welcome!</span>
 					<div> 
-						<a href="#">Sign in</a> |  
-						<a href="#"> Register</a>
+						<a href="/login">Sign in</a> |  
+						<a href="/register"> Register</a>
 					</div>
 				</div>
 			</div>

@@ -44,4 +44,9 @@ class Product extends Model implements Searchable
     {
         return $this->price * (1 - ($this->discount / 100));
     }
+
+    public function getRouteKeyName()
+    {
+        return 'name';
+    }
 }

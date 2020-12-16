@@ -13,15 +13,28 @@ class SearchController extends Controller
 {
 	public function search(Request $request)
 	{
+		$brands = Brand::all();
+
+		$categories = Category::all();
+
 		$searchResults = (new Search())
 		->registerModel(Product::class, 'name', 'description')
+		->registerModel(Category::class, 'name')
 		->perform($request->input('query'));
 
-		return view('pages.shop', compact('searchResults', 'request'));
+		return view('pages.products', compact('searchResults', 'request', 'categories', 'brands', 'products'));
 	}
 
 	public function index(ProductsRequest $request)
 	{
+		if($request->input('query') !=NULL) {
+			$searchResults = (new Search())
+			->registerModel(Product::class, 'name', 'description')
+			->registerModel(Category::class, 'name')
+			->registerModel(Brand::class, 'name')
+			->perform($request->input('query'));
+		}
+
 		$brands = Brand::all();
 
 		$categories = Category::all();
@@ -44,11 +57,16 @@ class SearchController extends Controller
 			$productsQuery->whereIn('category_id', $request->category_id);
 		}
 
-		$products = $productsQuery->paginate(12)->withPath("?".$request->getQueryString());
+		$products = $productsQuery->latest()->orderBy('name')->paginate(12)->withPath("?".$request->getQueryString());
 		
 		// dd($products);
 
 		return view('pages.products', compact('products', 'request', 'brands', 'categories'));
 	}
 
-}		
+	public function product($id)
+	{
+		$product = Product::find($id);
+		return view('pages.product')->with('product', $product);
+	}
+}

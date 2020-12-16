@@ -4,10 +4,23 @@ namespace App\Models;
 
 use App\Models\Product;
 use Illuminate\Database\Eloquent\Model;
+use Spatie\Searchable\SearchResult;
+use Spatie\Searchable\Searchable;
 
-class Category extends Model
+class Category extends Model implements Searchable
 {
-	protected $fillable = ['parent_id'];
+	protected $fillable = ['name','parent_id'];
+
+	protected $guarded = [];
+
+	public function getSearchresult(): SearchResult
+    {
+
+        return new SearchResult(
+            $this,
+            $this->name,
+        );
+    }
 	
 	public function products()
 	{

@@ -19,9 +19,7 @@ Route::get('/', function () {
 
 Route::get('/products', 'SearchController@index')->name('products');
 
-Route::get('/product', function() {
-	return view('pages.product');
-});
+Route::get('/product/{id}', 'SearchController@product')->name('product');
 
 Route::get('/cart', function() {
 	return view('pages.cart');
@@ -29,10 +27,10 @@ Route::get('/cart', function() {
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
-
-Route::get('/search', 'SearchController@search')->name('search');
+Route::get('/products/search', 'SearchController@index')->name('search');
 
 Route::get('/shop', 'SearchController@brandCategory');
 
 Route::get('/region', 'CityController@getRegion')->name('region');
+
+Route::get('admin/routes', 'HomeController@admin')->middleware('admin');

@@ -9,7 +9,7 @@
   <div class="card mx-auto" style="max-width:520px; margin-top:40px;">
     <article class="card-body">
       <header class="mb-4"><h4 class="card-title">Sign up</h4></header>
-      <form method="POST" action="/register">
+      <form method="post" action="/register">
         @csrf
         <div class="form-row">
           <div class="col form-group">

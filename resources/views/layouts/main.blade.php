@@ -10,19 +10,16 @@
 	<title>Website title - bootstrap html template</title>
 
 	<!-- jQuery -->
-	<script src="js/jquery-2.0.0.min.js" type="text/javascript"></script>
+	<script src="{{ asset('js/jquery-2.0.0.min.js')}}" type="text/javascript"></script>
 
 	<!-- Bootstrap4 files-->
-	<script src="js/bootstrap.bundle.min.js" type="text/javascript"></script>
-	<link href="css/bootstrap.css" rel="stylesheet" type="text/css"/>
+	<script src="{{ asset('js/bootstrap.bundle.min.js')}}" type="text/javascript"></script>
+	<link href="{{ asset('css/bootstrap.css')}}" rel="stylesheet" type="text/css"/>
 
-	<!-- Font awesome 5 -->
-	<!-- <script src="https://kit.fontawesome.com/bd48b8b78e.js" crossorigin="anonymous"></script> -->
-	<link rel="stylesheet" href="css/all.min.css">
 
-	<!-- custom style -->
-	<link href="css/ui.css" rel="stylesheet" type="text/css"/>
-	<link href="css/responsive.css" rel="stylesheet" media="only screen and (max-width: 1200px)" />
+	<link rel="stylesheet" href="{{ asset('css/all.min.css')}}">
+	<link href="{{ asset('css/ui.css')}}" rel="stylesheet" type="text/css"/>
+	<link href="{{ asset('css/responsive.css')}}" rel="stylesheet" media="only screen and (max-width: 1200px)" />
 
 </head>
 <body>
@@ -48,8 +45,6 @@
 	<!-- ========================= FOOTER END // ========================= -->
 	<!-- custom javascript -->
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-
-	<script src="js/script.js" type="text/javascript"></script>
-
+	<script src="{{ asset('js/script.js')}}" type="text/javascript"></script>
 </body>
 </html>
