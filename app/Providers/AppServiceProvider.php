@@ -5,8 +5,8 @@ namespace App\Providers;
 use App\Models\Brand;
 use App\Models\Category;
 use App\Models\City;
+use App\Models\District;
 use App\Models\Product;
-use App\Models\Region;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -35,9 +35,9 @@ class AppServiceProvider extends ServiceProvider
         });
 
         view()->composer('auth.register', function($view){
-            $cities = City::with('regions')->get();
-            $regions = Region::all();
-            $view->with(compact('regions', 'cities'));
+            $cities = City::with('districts')->get();
+            $districts = District::all();
+            $view->with(compact('districts', 'cities'));
 
         }); 
 

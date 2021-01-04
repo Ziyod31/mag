@@ -2,19 +2,19 @@
 
 namespace App\Models;
 
-use App\Models\Region;
+use App\Models\District;
 use App\User;
 use Illuminate\Database\Eloquent\Model;
 
 class City extends Model
 {
-    public function regions()
-    {
-    	return $this->hasMany(Region::class);
-    }
+	public function districts()
+	{
+		return $this->hasMany(District::class);
+	}
 
-    public function users()
-    {
-    	return $this->belongsToMany(User::class);
-    }
+	public function users()
+	{
+		return $this->belongsToMany(User::class);
+	}
 }

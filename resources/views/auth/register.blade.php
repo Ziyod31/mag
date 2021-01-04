@@ -44,8 +44,8 @@
           </div> <!-- form-group end.// -->
 
           <div class="form-group col-md-6">
-            <label>Region</label>
-            <select id="region" name="region" class="form-control">
+            <label>District</label>
+            <select id="district" name="district" class="form-control">
             </select>
           </div> <!-- form-group end.// -->
 

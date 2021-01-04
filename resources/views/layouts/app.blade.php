@@ -61,12 +61,12 @@ $(document).ready(function() {
      $(document).ready(function() {
         $('#city').on('change', function() {
             var city_id = this.value;
-            $("#region").html('');
+            $("#district").html('');
             $.ajax({
                 headers: {
                     'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
                 },
-                url:"{{url('region')}}",
+                url:"{{url('district')}}",
                 type: "GET",
                 data: {
                     city_id: city_id,
@@ -74,10 +74,10 @@ $(document).ready(function() {
                 },
                 dataType : 'json',
                 success: function(result){
-                    $('#region').html(' ');
-                    $('#region').append('<option value="">Choose ...</option>'); 
+                    $('#district').html(' ');
+                    $('#district').append('<option value="">Choose ...</option>'); 
                     $.each(result.regions,function(key,value){
-                        $("#region").append('<option value="'+value.id+'">'+value.name+'</option>');
+                        $("#district").append('<option value="'+value.id+'">'+value.name+'</option>');
                     });
                     // $('#region').html('<option value="">Select City First</option>'); 
                 }

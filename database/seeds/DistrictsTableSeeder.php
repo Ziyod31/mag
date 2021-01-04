@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 
-class RegionsTableSeeder extends Seeder
+class DistrictsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,7 +12,7 @@ class RegionsTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('regions')->insert([
+    	DB::table('districts')->insert([
     		[
     			'name' => 'Yunusabad',
     			'city_id' => '1',
