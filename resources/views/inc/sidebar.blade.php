@@ -46,3 +46,9 @@
 		<span>Users</span>
 	</a>
 </li>
+<li class="nav-item">
+	<a class="nav-link" href="{{ route('index') }}">
+		<i class="fas fa-fw fa-globe"></i>
+		<span>Web Site</span>
+	</a>
+</li>

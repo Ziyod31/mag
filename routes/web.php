@@ -33,6 +33,27 @@ Route::get('/shop', 'SearchController@brandCategory');
 
 Route::get('/district', 'CityController@getDistrict')->name('district');
 
-Route::get('/admin', function () {
-	return view('admin/index');
-})->name('admin');
+Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
+
+
+
+Route::middleware(['auth'])->group(function() {
+	Route::get('/profile', function() {
+		return view('auth/user/index');
+	})->name('profile');
+
+	Route::group(['prefix' => 'admin'], function() {
+		Route::group(['middleware' => 'is_admin'], function(){
+			Route::get('/admin', function() {
+				return view('admin/index');
+			})->name('admin');
+
+			Route::resource('categories', 'CategoryController');
+			Route::resource('brands', 'BrandController');
+			Route::resource('products', 'ProductController');
+			Route::resource('cities', 'CityController');
+			Route::resource('districts', 'DistrictController');
+			Route::resource('users', 'UserController');
+		});
+	});
+});
