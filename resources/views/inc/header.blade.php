@@ -57,6 +57,8 @@
 					@guest
 					<div class="widget-header icontext">
 						<a href="#" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
+					</div>
+					<div class="widget-header icontext">
 						<div class="text">
 							<span class="text-muted">Welcome!</span>
 							<div> 
@@ -73,6 +75,8 @@
 						@else
 						<a href="{{ route('profile') }}" class="icon icon-sm rounded-circle border"><i class="fa fa-user"></i></a>
 						@endif
+					</div>
+					<div class="widget-header icontext">
 						<div class="text">
 							<span class="text-muted">Welcome!</span>
 							<div> 

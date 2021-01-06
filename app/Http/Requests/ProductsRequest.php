@@ -24,8 +24,12 @@ class ProductsRequest extends FormRequest
     public function rules()
     {
         return [
-            'price_from' => 'nullable|numeric|min:0',
-            'price_to' => 'nullable|numeric|min:0',
+            'price' => 'required|numeric|min:2|max:255',
+            'name' => 'required|min:3|max:255',
+            'description' => 'required|min:5|max:255',
+            'quantity' => 'required|numeric|min:1|max:255',
+            'image' => 'mimes:jpeg,jpg,png|max:10000',
         ];
+
     }
 }

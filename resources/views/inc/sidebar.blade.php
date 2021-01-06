@@ -1,3 +1,5 @@
+@auth
+@if(auth()->user()->is_admin == 1)
 <li class="nav-item">
 	<a class="nav-link" href="index.html">
 		<i class="fas fa-fw fa-tachometer-alt"></i>
@@ -52,3 +54,18 @@
 		<span>Web Site</span>
 	</a>
 </li>
+@else
+<li class="nav-item">
+	<a class="nav-link" href="{{ route('profile') }}">
+		<i class="fas fa-fw fa-globe"></i>
+		<span>Profile</span>
+	</a>
+</li>
+<li class="nav-item">
+	<a class="nav-link" href="{{ route('index') }}">
+		<i class="fas fa-fw fa-globe"></i>
+		<span>My Orders</span>
+	</a>
+</li>
+@endif
+@endauth

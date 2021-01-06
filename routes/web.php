@@ -43,8 +43,8 @@ Route::middleware(['auth'])->group(function() {
 	})->name('profile');
 
 	Route::group(['prefix' => 'admin'], function() {
-		Route::group(['middleware' => 'is_admin'], function(){
-			Route::get('/admin', function() {
+		Route::group(['middleware' => 'admin'], function(){
+			Route::get('/', function() {
 				return view('admin/index');
 			})->name('admin');
 
