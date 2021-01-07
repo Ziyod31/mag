@@ -47,18 +47,19 @@ $(document).ready(function() {
     <header class="section-header">
         @include('inc.header')
     </header> <!-- section-header.// -->
-
+    @include('inc.errors')
     @yield('content')
 
     <!-- ========================= FOOTER ========================= -->
     <footer class="section-footer border-top bg">
         <div class="container">
+
             @include('inc.footer')
         </div><!-- //container -->
     </footer>
     <!-- ========================= FOOTER END // ========================= -->
     <script type="text/javascript">
-     $(document).ready(function() {
+       $(document).ready(function() {
         $('#city').on('change', function() {
             var city_id = this.value;
             $("#district").html('');
@@ -76,7 +77,7 @@ $(document).ready(function() {
                 success: function(result){
                     $('#district').html(' ');
                     $('#district').append('<option value="">Choose ...</option>'); 
-                    $.each(result.regions,function(key,value){
+                    $.each(result.districts,function(key,value){
                         $("#district").append('<option value="'+value.id+'">'+value.name+'</option>');
                     });
                     // $('#region').html('<option value="">Select City First</option>'); 

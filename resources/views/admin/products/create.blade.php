@@ -12,6 +12,7 @@
 
 <div class="col-md-12">
 	@isset($product)
+	
 	<h1>Edit product - <b>{{ $product->name }}</b></h1>
 	@else
 	<h1>Add Product</h1>
@@ -27,7 +28,7 @@
 	@isset($product)
 	@method('PUT')
 	@endisset
-	{{ csrf_field() }}
+	@csrf
 	<div class="form-row">
 		<div class="col-md-6">
 			<label for="name">Name:</label>
@@ -55,7 +56,7 @@
 			<label for="brand_id">Brand:</label>
 			<select class="form-control" id="brand_id" name="brand_id">
 				@foreach($brands as $brand)
-				<option value="{{ $category->id }}"
+				<option value="{{ $brand->id }}"
 					@isset($product)
 					@if($product->brand_id == $brand->id)
 					selected
@@ -97,6 +98,4 @@
 
 </form>
 </div>
-
-
 @endsection

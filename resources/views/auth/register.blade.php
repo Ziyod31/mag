@@ -1,5 +1,4 @@
 @extends('layouts.app')
-
 @section('content')
 <!-- ========================= SECTION CONTENT ========================= -->
 
@@ -63,7 +62,7 @@
           </div> <!-- form-group end.// --> 
           <div class="form-group col-md-6">
             <label>Repeat password</label>
-            <input class="form-control" type="password" id="password-confirm" name="password-confirmation">
+            <input class="form-control" type="password" id="password-confirm" name="password_confirmation">
           </div> <!-- form-group end.// -->  
         </div>
         <div class="form-group">

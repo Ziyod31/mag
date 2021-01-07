@@ -1,5 +1,6 @@
 @extends('layouts.main')
 @section('content')
+
 <section class="section-pagetop bg">
 	<div class="container">
 		<h2 class="title-page">{{$product->category->name}}</h2>

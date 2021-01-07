@@ -19,7 +19,7 @@ Route::get('/', function () {
 
 Route::get('/products', 'SearchController@index')->name('products');
 
-Route::get('/product/{id}', 'SearchController@product')->name('product');
+Route::get('/product/{product}', 'SearchController@product')->name('product.show');
 
 Route::get('/cart', function() {
 	return view('pages.cart');
@@ -38,8 +38,8 @@ Route::get('/logout', 'Auth\LoginController@logout')->name('logout');
 
 
 Route::middleware(['auth'])->group(function() {
-	Route::get('/profile', function() {
-		return view('auth/user/index');
+	Route::get('/profile/{user}', function() {
+		return view('pages.profile');
 	})->name('profile');
 
 	Route::group(['prefix' => 'admin'], function() {
@@ -56,4 +56,6 @@ Route::middleware(['auth'])->group(function() {
 			Route::resource('users', 'UserController');
 		});
 	});
+
+	Route::resource('orders', 'OrderController');
 });

@@ -11,7 +11,7 @@ use Spatie\Searchable\Searchable;
 
 class Product extends Model implements Searchable
 {
-    protected $fillable = ['name', 'description', 'category_id', 'brand_id'];
+    protected $fillable = ['name','image', 'quantity','discount','price','description', 'category_id', 'brand_id'];
 
     protected $guarded = [];
 
@@ -47,6 +47,6 @@ class Product extends Model implements Searchable
 
     public function getRouteKeyName()
     {
-        return 'name';
+        return $this->name;
     }
 }

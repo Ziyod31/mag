@@ -33,7 +33,7 @@
 	<nav class="navbar navbar-main navbar-expand-lg navbar-light border-bottom">
 		@include('inc.nav')
 	</nav>
-
+	@include('inc.errors')
 	@yield('content')
 
 	<!-- ========================= FOOTER ========================= -->

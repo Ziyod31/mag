@@ -8,6 +8,7 @@ use App\Models\Category;
 use App\Models\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Str;
 
 class ProductController extends Controller
 {
@@ -27,26 +28,16 @@ class ProductController extends Controller
 
 	public function store(ProductsRequest $request)
 	{
+		$params = $request->all();
 
-		// Get filename with extension
-		$filenameWithExt = $request->file('image')->getClientOriginalName();
-      // Get just the filename
-		$filename = pathinfo($filenameWithExt, PATHINFO_FILENAME);
-      // Get extension
-		$extension = $request->file('image')->getClientOriginalExtension();
-      // Create new filename
-		$filenameToStore = $filename.'_'.time().'.'.$extension;
-      // Upload image
-		$path= $request->file('image')->storeAs('public/products/img/', $filenameToStore);
-		
-		$product = new Product();
-		$product->image = $path;
-		$product = $request->all();
+		unset($params['image']);
+		if($request->has('image')) {
+			$params['image'] = $request->file('image')->store('products');
+		}
 
+		Product::create($params);
 
-		$product->save();
-
-		return redirect()->route('products.index');
+		return redirect('/admin/products')->with('success', 'New product successfully added !');
 	}
 
 	public function show(Product $product)
@@ -60,5 +51,26 @@ class ProductController extends Controller
 		$brands = Brand::get();
 
 		return view('admin.products.create', compact('product','categories', 'brands'));
+	}
+
+	public function update(Request $request, Product $product)
+	{
+		$params = $request->all();
+
+		unset($params['image']);
+		if($request->has('image')) {
+			Storage::delete($product->image);
+			$params['image'] = $request->file('image')->store('public/products');
+		}
+
+		$product->update($params);
+
+		return redirect('/admin/products')->with('success', 'Product successfully edited !');
+	}
+
+	public function destroy(Product $product)
+	{
+		$product->delete();
+		return back()->with('success', 'The product was deleted !');
 	}
 }

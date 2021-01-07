@@ -13,27 +13,17 @@ class SearchController extends Controller
 {
 	public function search(Request $request)
 	{
-		$brands = Brand::all();
-
-		$categories = Category::all();
 
 		$searchResults = (new Search())
 		->registerModel(Product::class, 'name', 'description')
 		->registerModel(Category::class, 'name')
 		->perform($request->input('query'));
 
-		return view('pages.products', compact('searchResults', 'request', 'categories', 'brands', 'products'));
+		return view('pages.products', compact('searchResults', 'request'));
 	}
 
-	public function index(ProductsRequest $request)
+	public function index(Request $request)
 	{
-		if($request->input('query') !=NULL) {
-			$searchResults = (new Search())
-			->registerModel(Product::class, 'name', 'description')
-			->registerModel(Category::class, 'name')
-			->registerModel(Brand::class, 'name')
-			->perform($request->input('query'));
-		}
 
 		$brands = Brand::all();
 
@@ -64,9 +54,8 @@ class SearchController extends Controller
 		return view('pages.products', compact('products', 'request', 'brands', 'categories'));
 	}
 
-	public function product($id)
-	{
-		$product = Product::find($id);
-		return view('pages.product')->with('product', $product);
+	public function product(Product $product)
+	{	
+		return view('pages.product', compact('product'));
 	}
 }

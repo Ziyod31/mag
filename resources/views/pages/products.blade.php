@@ -74,7 +74,7 @@
 									</span>
 								</div>
 								<figcaption class="info-wrap border-top">
-									<a href="/product/{{$product->id}}" class="title">{{$product->name}}</a>
+									<a href="{{ route('product.show', $product) }}" class="title">{{$product->name}}</a>
 									<div class="price-wrap mt-2">
 										@if($product->discount > 0)
 										<span class="price">${{$product->new_price}}</span>
