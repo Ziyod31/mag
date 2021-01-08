@@ -47,6 +47,6 @@ class Product extends Model implements Searchable
 
     public function getRouteKeyName()
     {
-        return $this->name;
+        return 'name';
     }
 }

@@ -12,9 +12,9 @@
 				<thead>
 					<tr>
 						<th>Id</th>
-						<th>Brand</th>
-						<th>Category</th>
 						<th>Name</th>
+						<th>Category</th>
+						<th>Brand</th>
 						<th>Description</th>
 						<th>Price</th>
 						<th>Quantity</th>
@@ -27,9 +27,9 @@
 					@foreach($products as $product)
 					<tr>
 						<td>{{$product->id}}</td>
-						<td><a href="{{ route('products.show', $product .'-') }}">{{$product->brand->name}}</a></td>
+						<td><a href="{{ route('products.show', $product) }}">{{$product->name}}</a></td>
 						<td>{{$product->category->name}}</td>
-						<td>{{$product->name}}</td>
+						<td>{{$product->brand->name}}</td>
 						<td>{{$product->description}}</td>
 						<td>{{$product->price}}$</td>
 						<td>{{$product->quantity}}</td>
