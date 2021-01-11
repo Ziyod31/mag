@@ -13,6 +13,7 @@
 					<tr>
 						<th>Id</th>
 						<th>Parent Id</th>
+						<th>Parent Name</th>
 						<th>Name</th>
 						<th>Image</th>
 						<th>Edit</th>
@@ -23,16 +24,15 @@
 					@foreach($categories as $category)
 					<tr>
 						<td>{{$category->id}}</td>
-						@dd($category->parent_id)
-						@foreach($category->parent_id as $parent)
-						@if($category->parent_id === 1)
-						<td>{{ $category->name }}</td>
+						<td>{{$category->parent_id}}</td>
+						@if($category->parent_id != NULL)
+						<td>{{ $category->parent->name }}</td>
+						@else
+						<td></td>
 						@endif
-						@endforeach
-
 						<td>{{ $category->name }}</td>
-						<td class="card card-wrap" style="max-width: 500px;">
-							<img src="{{ Storage::url($category->image) }}" alt="">
+						<td>
+							<img class="card card-wrap" style="max-width: 300px;" src="{{ Storage::url($category->image) }}" alt="">
 						</td>
 						<td>
 							<a href="{{ route('categories.edit', $category) }}" class="btn btn-warning">Edit</a>

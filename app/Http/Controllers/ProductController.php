@@ -32,12 +32,12 @@ class ProductController extends Controller
 
 		unset($params['image']);
 		if($request->has('image')) {
-			$params['image'] = $request->file('image')->store('products');
+			$params['image'] = $request->file('image')->store('public/products');
 		}
 
 		Product::create($params);
 
-		return redirect('/admin/products')->with('success', 'New product successfully added !');
+		return redirect()->route('products.index')->with('success', 'New product successfully added !');
 	}
 
 	public function show(Product $product)
@@ -53,7 +53,7 @@ class ProductController extends Controller
 		return view('admin.products.create', compact('product','categories', 'brands'));
 	}
 
-	public function update(Request $request, Product $product)
+	public function update(ProductsRequest $request, Product $product)
 	{
 		$params = $request->all();
 
@@ -65,12 +65,14 @@ class ProductController extends Controller
 
 		$product->update($params);
 
-		return redirect('/admin/products')->with('success', 'Product successfully edited !');
+		return redirect()->route('products.index')->with('success', 'Product successfully edited !');
 	}
 
 	public function destroy(Product $product)
 	{
-		$product->delete();
+		if(Storage::delete($product->image)){
+			$product->delete();
+		}
 		return back()->with('success', 'The product was deleted !');
 	}
 }

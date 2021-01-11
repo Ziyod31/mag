@@ -9,7 +9,7 @@ use Spatie\Searchable\Searchable;
 
 class Category extends Model implements Searchable
 {
-	protected $fillable = ['name','parent_id'];
+	protected $fillable = ['name','parent_id', 'image'];
 
 	protected $guarded = [];
 
