@@ -32,7 +32,7 @@
 						@endif
 						<td>{{ $category->name }}</td>
 						<td>
-							<img class="card card-wrap" style="max-width: 300px;" src="{{ Storage::url($category->image) }}" alt="">
+							<img style="max-width: 100px;" src="{{ Storage::url($category->image) }}" alt="">
 						</td>
 						<td>
 							<a href="{{ route('categories.edit', $category) }}" class="btn btn-warning">Edit</a>

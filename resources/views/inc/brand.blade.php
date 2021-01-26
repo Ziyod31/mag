@@ -7,7 +7,7 @@
 		@foreach($brands as $brand)
 		<div class="col-md-2 col-6">
 			<figure class="box item-logo">
-				<a href="#"><img src="{{$brand->image}}"></a>
+				<a href="#"><img src="{{ Storage::url($brand->image)}}"></a>
 			</figure> <!-- item-logo.// -->
 		</div> <!-- col.// -->
 		@endforeach

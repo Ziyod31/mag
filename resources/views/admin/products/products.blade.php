@@ -33,7 +33,7 @@
 						<td>{{$product->description}}</td>
 						<td>{{$product->price}}$</td>
 						<td>{{$product->quantity}}</td>
-						<td class="card card-wrap" style="max-width: 100px;"><img src="{{ Storage::url($product->image) }}" alt=""></td>
+						<td style="max-width: 100px;"><img src="{{ Storage::url($product->image) }}" alt=""></td>
 						<td>{{$product->discount}}%</td>
 						<td>
 							<a href="{{ route('products.edit', $product) }}" class="btn btn-warning">Edit</a>

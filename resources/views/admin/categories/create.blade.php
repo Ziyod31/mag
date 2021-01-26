@@ -15,7 +15,7 @@
 	
 	<h1>Edit category - <b>{{ $category->name }}</b></h1>
 	@else
-	<h1>Add Product</h1>
+	<h1>Add Category</h1>
 	@endisset
 
 	<form method="post" enctype="multipart/form-data"
@@ -37,6 +37,7 @@
 		<div class="form-group">
 			<label for="category_id">Parent Category:</label>
 			<select class="form-control" id="parent_id" name="parent_id">
+				<option value="0">Choose...</option>
 				@foreach($categories as $category)
 				<option value="{{ $category->id }}"
 					@isset($category)

@@ -9,7 +9,7 @@ use Spatie\Searchable\Searchable;
 
 class Brand extends Model implements Searchable
 {
-	protected $fillable = ['name'];
+	protected $fillable = ['name', 'image'];
 
 	protected $guarded = [];
 

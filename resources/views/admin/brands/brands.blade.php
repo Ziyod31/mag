@@ -24,7 +24,7 @@
 						<td>{{$brand->id}}</td>
 						<td>{{ $brand->name }}</td>
 						<td>
-							<img class="card card-wrap" style="max-width: 300px;" src="{{ Storage::url($brand->image) }}" alt="">
+							<img style="max-width: 100px;" src="{{ Storage::url($brand->image) }}" alt="">
 						</td>
 						<td>
 							<a href="{{ route('brands.edit', $brand) }}" class="btn btn-warning">Edit</a>

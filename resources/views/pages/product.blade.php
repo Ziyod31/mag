@@ -11,7 +11,7 @@
 					<aside class="col-md-6">
 						<article class="gallery-wrap">
 							<div class="img-big-wrap">
-								<div> <a href="#"><img src="{{ asset($product->image) }}"></a></div>
+								<div> <a href="#"><img src="{{ Storage::url($product->image) }}"></a></div>
 							</div>
 							<!-- <div class="thumbs-wrap">
 								<a href="" class="item-thumb"> <img src="bootstrap-ecommerce-html/images/items/12.jpg"></a>

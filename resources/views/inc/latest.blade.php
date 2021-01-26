@@ -10,7 +10,7 @@
 		<div class="col-md-3 col-sm-6">
 			<figure class="card card-product-grid">
 				<div class="img-wrap">
-					<img src="{{ $product->image}}">
+					<img src="{{ Storage::url($product->image)}}">
 					<span class="topbar">
 						<a href="#" class="float-right"><i class="fa fa-heart"></i></a>
 						@if($product->discount > 0)
