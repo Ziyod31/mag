@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\City;
 use App\Models\District;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class DistrictController extends Controller
      */
     public function index()
     {
-        //
+        $districts = District::all();
+        return view('admin.districts.districts', compact('districts'));
     }
 
     /**
@@ -24,7 +26,8 @@ class DistrictController extends Controller
      */
     public function create()
     {
-        //
+        $cities = City::get();
+        return view('admin.districts.create', compact('cities'));
     }
 
     /**
@@ -35,7 +38,16 @@ class DistrictController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, [
+            'name' => 'required|min:3|max:20',
+            'city_id' => 'required',
+        ]);
+
+        $district = new District;
+        $district->name = $request->input('name');
+        $district->city_id = $request->input('city_id');
+        $district->save();
+        return redirect()->route('districts.index')->with('success', 'New District is successfully added !');
     }
 
     /**
@@ -57,7 +69,8 @@ class DistrictController extends Controller
      */
     public function edit(District $district)
     {
-        //
+        $cities = City::get();
+        return view('admin.districts.create', compact('cities', 'district'));
     }
 
     /**
